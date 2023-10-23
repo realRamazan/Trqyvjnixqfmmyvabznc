@@ -32,6 +32,14 @@ public class User {
     public User() {
     }
 
+    public User(String date, String name, String phoneNumber1, String phoneNumber2, String yearOfBirth) {
+        this.date = date;
+        this.name = name;
+        this.phoneNumber1 = phoneNumber1;
+        this.phoneNumber2 = phoneNumber2;
+        this.yearOfBirth = yearOfBirth;
+    }
+
     public int getId() {
         return id;
     }
