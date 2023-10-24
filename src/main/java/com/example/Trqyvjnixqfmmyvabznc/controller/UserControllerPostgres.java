@@ -4,15 +4,14 @@ import com.example.Trqyvjnixqfmmyvabznc.entity.User;
 import com.example.Trqyvjnixqfmmyvabznc.packageFilter.Filter;
 import com.example.Trqyvjnixqfmmyvabznc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
+@RequestMapping
 @RestController
 public class UserControllerPostgres {
-
     @Autowired
     private UserService userService;
 
