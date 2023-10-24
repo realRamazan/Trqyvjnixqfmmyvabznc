@@ -1,8 +1,10 @@
 package com.example.Trqyvjnixqfmmyvabznc.service;
 
 import com.example.Trqyvjnixqfmmyvabznc.entity.User;
+import com.example.Trqyvjnixqfmmyvabznc.packageFilter.Filter;
 import com.example.Trqyvjnixqfmmyvabznc.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,15 +15,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class UserService {
     @Autowired
     UserRepository userRepository;
 
-
     @Transactional
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
+    public List<User> getAllUsers(Filter filter){
+        return userRepository.findAll(PageRequest.of(filter.getOffset(), filter.getLimit())).getContent();
     }
 
     public List<User> createUser(String name, String phoneNumber1, String phoneNumber2, String yearOfBirth){
