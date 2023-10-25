@@ -17,6 +17,7 @@ public class UserControllerPostgres {
 
     @PostMapping("/users")
     public List<User> getAllUsers(@RequestBody Filter filter){
+        System.out.println(filter.getLimit());
         return userService.getAllUsers(filter);
     }
 

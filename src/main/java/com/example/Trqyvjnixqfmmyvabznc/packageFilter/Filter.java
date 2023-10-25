@@ -1,8 +1,8 @@
 package com.example.Trqyvjnixqfmmyvabznc.packageFilter;
 
 public class Filter {
-    int offset = 1;
-    int limit = 1;
+    int offset;
+    int limit;
 
     public Filter(int offset, int limit) {
         this.offset = offset;
