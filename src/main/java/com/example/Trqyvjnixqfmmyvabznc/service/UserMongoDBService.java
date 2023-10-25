@@ -63,4 +63,13 @@ public class UserMongoDBService {
         }
         else {throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");}
     }
+
+    public UserMongoDB getUserMongoDB(String id) {
+        Optional<UserMongoDB> userMongoDBOptional = userMongoDBRepository.findById(id);
+        if(userMongoDBOptional.isPresent()){
+            UserMongoDB userMongoDB = userMongoDBOptional.get();
+            return userMongoDB;
+        }
+        else {throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");}
+    }
 }

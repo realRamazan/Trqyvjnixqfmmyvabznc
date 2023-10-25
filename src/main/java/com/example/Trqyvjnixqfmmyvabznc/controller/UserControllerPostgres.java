@@ -31,11 +31,8 @@ public class UserControllerPostgres {
     }
 
     @PostMapping("/update")
-    public List<User> updateUser(@RequestParam("id") int id,
-                                 @RequestParam(value = "name", required = false) String name,
-                                 @RequestParam(value = "phoneNumber1", required = false) String phoneNumber1,
-                                 @RequestParam(value = "phoneNumber2", required = false) String phoneNumber2){
-        return userService.updateUser(id, name, phoneNumber1, phoneNumber2);
+    public List<User> updateUser(@RequestBody UserDTO userDTO){
+        return userService.updateUser(userDTO);
     }
 
     @PostMapping("/delete")

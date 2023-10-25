@@ -41,12 +41,12 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public List<User> updateUser(int id, String name, String phoneNumber1, String phoneNumber2){
-        User user = userRepository.findById(id).orElse(null);
+    public List<User> updateUser(UserDTO userDTO){
+        User user = userRepository.findById(userDTO.getId()).orElse(null);
         if(user == null){ throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");}
-        if(name != null ){ user.setName(name); }
-        if(phoneNumber1 != null ){ user.setPhoneNumber1(phoneNumber1); }
-        if(phoneNumber2 != null ){ user.setPhoneNumber2(phoneNumber2); }
+        if(userDTO.getName() != null ){ user.setName(userDTO.getName()); }
+        if(userDTO.getPhoneNumber1() != null ){ user.setPhoneNumber1(userDTO.getPhoneNumber1()); }
+        if(userDTO.getPhoneNumber2() != null ){ user.setPhoneNumber2(userDTO.getPhoneNumber2()); }
         userRepository.save(user);
         return userRepository.findAll();
     }

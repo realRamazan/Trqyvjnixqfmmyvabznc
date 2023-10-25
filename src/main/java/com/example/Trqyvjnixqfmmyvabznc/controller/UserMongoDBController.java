@@ -17,6 +17,10 @@ public class UserMongoDBController {
     @Autowired
     UserMongoDBService userMongoDBService;
 
+    @GetMapping("/userMongo")
+    public UserMongoDB getUserMongoDB(@RequestParam("id") String id){
+        return userMongoDBService.getUserMongoDB(id);
+    }
     @GetMapping("/mongoDB")
     public List<UserMongoDB> getAll(@RequestBody Filter filter){
         return userMongoDBService.findAll(filter);
