@@ -1,11 +1,13 @@
 package com.example.Trqyvjnixqfmmyvabznc.controller;
 
+import com.example.Trqyvjnixqfmmyvabznc.dto.UserDTO;
+import com.example.Trqyvjnixqfmmyvabznc.dto.UserMongoDTO;
 import com.example.Trqyvjnixqfmmyvabznc.model.UserMongoDB;
+import com.example.Trqyvjnixqfmmyvabznc.packageFilter.Filter;
 import com.example.Trqyvjnixqfmmyvabznc.repository.UserMongoDBRepository;
 import com.example.Trqyvjnixqfmmyvabznc.service.UserMongoDBService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,7 +18,21 @@ public class UserMongoDBController {
     UserMongoDBService userMongoDBService;
 
     @GetMapping("/mongoDB")
-    public List<UserMongoDB> getAll(){
-        return userMongoDBService.findAll();
+    public List<UserMongoDB> getAll(@RequestBody Filter filter){
+        return userMongoDBService.findAll(filter);
+    }
+    @PostMapping("/createMongo")
+    public List<UserMongoDB> createUserMongoDB(@RequestBody UserMongoDTO userMongoDTO){
+        return userMongoDBService.createUserMongo(userMongoDTO);
+    }
+
+    @PostMapping("/updateMongo")
+    public List<UserMongoDB> updateUserMongoDB(@RequestBody UserMongoDTO userMongoDTO){
+        return userMongoDBService.updateUserMongo(userMongoDTO);
+    }
+
+    @PostMapping("/deleteMongo")
+    public List<UserMongoDB> deleteUserMongoDB(@RequestParam("id") String id){
+        return userMongoDBService.deleteUserMongoDB(id);
     }
 }

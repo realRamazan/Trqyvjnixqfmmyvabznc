@@ -43,11 +43,6 @@ public class UserService {
 
     public List<User> updateUser(int id, String name, String phoneNumber1, String phoneNumber2){
         User user = userRepository.findById(id).orElse(null);
-//        Optional<User> userOpt = findById(id);
-//        if(userOpt.isPresent()) {
-//            User user = userOpt.get();
-//        }
-
         if(user == null){ throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");}
         if(name != null ){ user.setName(name); }
         if(phoneNumber1 != null ){ user.setPhoneNumber1(phoneNumber1); }
