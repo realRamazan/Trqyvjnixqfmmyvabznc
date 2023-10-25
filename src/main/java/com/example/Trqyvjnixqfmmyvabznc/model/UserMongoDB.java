@@ -1,44 +1,33 @@
-package com.example.Trqyvjnixqfmmyvabznc.entity;
+package com.example.Trqyvjnixqfmmyvabznc.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import jakarta.persistence.*;
+@Document("usersMongoDB")
+public class UserMongoDB {
 
-@Entity
-@Table(name = "users")
-public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     int id;
-    @Column(name = "name")
+
     String name;
-    @Column(name = "yearOfBirth")
+
     String yearOfBirth;
-    @Column(name = "phoneNumber1")
+
     String phoneNumber1;
-    @Column(name = "phoneNumber2")
+
     String phoneNumber2;
-    @Column(name = "date")
+
     String date;
 
-    public User(int id, String name, String yearOfBirth, String phoneNumber1, String phoneNumber2, String date) {
-        this.id = id;
+    public UserMongoDB() {
+    }
+
+    public UserMongoDB(String name, String yearOfBirth, String phoneNumber1, String phoneNumber2, String date) {
         this.name = name;
         this.yearOfBirth = yearOfBirth;
         this.phoneNumber1 = phoneNumber1;
         this.phoneNumber2 = phoneNumber2;
         this.date = date;
-    }
-
-    public User() {
-    }
-
-    public User(String date, String name, String phoneNumber1, String phoneNumber2, String yearOfBirth) {
-        this.date = date;
-        this.name = name;
-        this.phoneNumber1 = phoneNumber1;
-        this.phoneNumber2 = phoneNumber2;
-        this.yearOfBirth = yearOfBirth;
     }
 
     public int getId() {

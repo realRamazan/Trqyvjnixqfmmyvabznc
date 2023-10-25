@@ -1,5 +1,6 @@
 package com.example.Trqyvjnixqfmmyvabznc.controller;
 
+import com.example.Trqyvjnixqfmmyvabznc.dto.UserDTO;
 import com.example.Trqyvjnixqfmmyvabznc.entity.User;
 import com.example.Trqyvjnixqfmmyvabznc.packageFilter.Filter;
 import com.example.Trqyvjnixqfmmyvabznc.service.UserService;
@@ -17,7 +18,6 @@ public class UserControllerPostgres {
 
     @PostMapping("/users")
     public List<User> getAllUsers(@RequestBody Filter filter){
-        System.out.println(filter.getLimit());
         return userService.getAllUsers(filter);
     }
 
@@ -26,11 +26,8 @@ public class UserControllerPostgres {
         return userService.getUserById(id);
     }
     @PostMapping("/create")
-    public List<User> createUser(@RequestParam("name") String name,
-                                 @RequestParam("phoneNumber1") String phoneNumber1,
-                                 @RequestParam("phoneNumber2") String phoneNumber2,
-                                 @RequestParam("yearOfBirth") String yearOfBirth){
-        return userService.createUser(name, phoneNumber1, phoneNumber2, yearOfBirth);
+    public List<User> createUser(@RequestBody UserDTO userDTO){
+        return userService.createUser(userDTO);
     }
 
     @PostMapping("/update")

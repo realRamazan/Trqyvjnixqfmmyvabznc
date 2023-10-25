@@ -1,5 +1,6 @@
 package com.example.Trqyvjnixqfmmyvabznc.service;
 
+import com.example.Trqyvjnixqfmmyvabznc.dto.UserDTO;
 import com.example.Trqyvjnixqfmmyvabznc.entity.User;
 import com.example.Trqyvjnixqfmmyvabznc.packageFilter.Filter;
 import com.example.Trqyvjnixqfmmyvabznc.repository.UserRepository;
@@ -26,11 +27,16 @@ public class UserService {
         return userRepository.findAll(PageRequest.of(filter.getOffset(), filter.getLimit())).getContent();
     }
 
-    public List<User> createUser(String name, String phoneNumber1, String phoneNumber2, String yearOfBirth){
+    public List<User> createUser(UserDTO userDTO){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String date = dtf.format(now);
-        User user = new User(date, name, phoneNumber1, phoneNumber2, yearOfBirth);
+        User user = new User();
+        user.setName(userDTO.getName());
+        user.setDate(date);
+        user.setPhoneNumber1(userDTO.getPhoneNumber1());
+        user.setPhoneNumber2(userDTO.getPhoneNumber2());
+        user.setYearOfBirth(userDTO.getYearOfBirth());
         userRepository.save(user);
         return userRepository.findAll();
     }
