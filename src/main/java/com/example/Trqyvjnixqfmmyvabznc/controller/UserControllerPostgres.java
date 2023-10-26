@@ -16,6 +16,10 @@ public class UserControllerPostgres {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/")
+    public String testNG(){
+        return "TestNG";
+    }
     @PostMapping("/users")
     public List<User> getAllUsers(@RequestBody Filter filter){
         return userService.getAllUsers(filter);
