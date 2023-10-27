@@ -25,12 +25,11 @@ public class UserMongoDBService {
     private UserMongoDBRepository userMongoDBRepository;
 
 
-
     public List<UserMongoDB> findAll(Filter filter) {
         return userMongoDBRepository.findAll(PageRequest.of(filter.getOffset(), filter.getLimit())).getContent();
     }
 
-    public List<UserMongoDB> createUserMongo(UserMongoDTO userMongoDTO){
+    public List<UserMongoDB> createUserMongo(UserMongoDTO userMongoDTO) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String date = dtf.format(now);
@@ -46,30 +45,40 @@ public class UserMongoDBService {
 
     public List<UserMongoDB> updateUserMongo(UserMongoDTO userMongoDTO) {
         UserMongoDB userMongoDB = userMongoDBRepository.findById(userMongoDTO.getId()).orElse(null);
-        if(userMongoDB == null){throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");}
-        if(userMongoDTO.getName() != null ){ userMongoDB.setName(userMongoDTO.getName()); }
-        if(userMongoDTO.getPhoneNumber1() != null ){ userMongoDB.setPhoneNumber1(userMongoDTO.getPhoneNumber1()); }
-        if(userMongoDTO.getPhoneNumber2() != null ){ userMongoDB.setPhoneNumber2(userMongoDTO.getPhoneNumber2()); }
+        if (userMongoDB == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");
+        }
+        if (userMongoDTO.getName() != null) {
+            userMongoDB.setName(userMongoDTO.getName());
+        }
+        if (userMongoDTO.getPhoneNumber1() != null) {
+            userMongoDB.setPhoneNumber1(userMongoDTO.getPhoneNumber1());
+        }
+        if (userMongoDTO.getPhoneNumber2() != null) {
+            userMongoDB.setPhoneNumber2(userMongoDTO.getPhoneNumber2());
+        }
         userMongoDBRepository.save(userMongoDB);
         return userMongoDBRepository.findAll();
     }
 
     public List<UserMongoDB> deleteUserMongoDB(String id) {
         Optional<UserMongoDB> userMongoDBOptional = userMongoDBRepository.findById(id);
-        if(userMongoDBOptional.isPresent()){
+        if (userMongoDBOptional.isPresent()) {
             UserMongoDB userMongoDB = userMongoDBOptional.get();
             userMongoDBRepository.delete(userMongoDB);
             return userMongoDBRepository.findAll();
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");
         }
-        else {throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");}
     }
 
     public UserMongoDB getUserMongoDB(String id) {
         Optional<UserMongoDB> userMongoDBOptional = userMongoDBRepository.findById(id);
-        if(userMongoDBOptional.isPresent()){
+        if (userMongoDBOptional.isPresent()) {
             UserMongoDB userMongoDB = userMongoDBOptional.get();
             return userMongoDB;
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");
         }
-        else {throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");}
     }
 }

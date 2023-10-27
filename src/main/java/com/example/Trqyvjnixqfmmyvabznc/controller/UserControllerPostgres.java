@@ -17,30 +17,32 @@ public class UserControllerPostgres {
     private UserService userService;
 
     @GetMapping("/")
-    public String testNG(){
+    public String testNG() {
         return "TestNG";
     }
+
     @PostMapping("/users")
-    public List<User> getAllUsers(@RequestBody Filter filter){
+    public List<User> getAllUsers(@RequestBody Filter filter) {
         return userService.getAllUsers(filter);
     }
 
     @GetMapping("/user")
-    public User getUserById(@RequestParam("id") int id){
+    public User getUserById(@RequestParam("id") int id) {
         return userService.getUserById(id);
     }
+
     @PostMapping("/create")
-    public List<User> createUser(@RequestBody UserDTO userDTO){
+    public List<User> createUser(@RequestBody UserDTO userDTO) {
         return userService.createUser(userDTO);
     }
 
     @PostMapping("/update")
-    public List<User> updateUser(@RequestBody UserDTO userDTO){
+    public List<User> updateUser(@RequestBody UserDTO userDTO) {
         return userService.updateUser(userDTO);
     }
 
     @PostMapping("/delete")
-    public List<User> deleteUser(@RequestParam("id") int id){
+    public List<User> deleteUser(@RequestParam("id") int id) {
         return userService.deleteUser(id);
     }
 }

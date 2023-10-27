@@ -11,15 +11,15 @@ public class User {
     @Column(name = "id")
     int id;
     @Column(name = "name")
-    String name;
+    private String name;
     @Column(name = "yearOfBirth")
-    String yearOfBirth;
+    private String yearOfBirth;
     @Column(name = "phoneNumber1")
-    String phoneNumber1;
+    private String phoneNumber1;
     @Column(name = "phoneNumber2")
-    String phoneNumber2;
+    private String phoneNumber2;
     @Column(name = "date")
-    String date;
+    private String date;
 
     public User(int id, String name, String yearOfBirth, String phoneNumber1, String phoneNumber2, String date) {
         this.id = id;

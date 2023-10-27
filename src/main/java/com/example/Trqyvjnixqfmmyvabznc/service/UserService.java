@@ -23,11 +23,11 @@ public class UserService {
     UserRepository userRepository;
 
     @Transactional
-    public List<User> getAllUsers(Filter filter){
+    public List<User> getAllUsers(Filter filter) {
         return userRepository.findAll(PageRequest.of(filter.getOffset(), filter.getLimit())).getContent();
     }
 
-    public List<User> createUser(UserDTO userDTO){
+    public List<User> createUser(UserDTO userDTO) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String date = dtf.format(now);
@@ -41,32 +41,42 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public List<User> updateUser(UserDTO userDTO){
+    public List<User> updateUser(UserDTO userDTO) {
         User user = userRepository.findById(userDTO.getId()).orElse(null);
-        if(user == null){ throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");}
-        if(userDTO.getName() != null ){ user.setName(userDTO.getName()); }
-        if(userDTO.getPhoneNumber1() != null ){ user.setPhoneNumber1(userDTO.getPhoneNumber1()); }
-        if(userDTO.getPhoneNumber2() != null ){ user.setPhoneNumber2(userDTO.getPhoneNumber2()); }
+        if (user == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");
+        }
+        if (userDTO.getName() != null) {
+            user.setName(userDTO.getName());
+        }
+        if (userDTO.getPhoneNumber1() != null) {
+            user.setPhoneNumber1(userDTO.getPhoneNumber1());
+        }
+        if (userDTO.getPhoneNumber2() != null) {
+            user.setPhoneNumber2(userDTO.getPhoneNumber2());
+        }
         userRepository.save(user);
         return userRepository.findAll();
     }
 
     public User getUserById(int id) {
         Optional<User> userOpt = userRepository.findById(id);
-        if(userOpt.isPresent()){
+        if (userOpt.isPresent()) {
             User user = userOpt.get();
             return user;
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");
         }
-        else {throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");}
     }
 
     public List<User> deleteUser(int id) {
         Optional<User> userOpt = userRepository.findById(id);
-        if(userOpt.isPresent()){
+        if (userOpt.isPresent()) {
             User user = userOpt.get();
             userRepository.delete(user);
             return userRepository.findAll();
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");
         }
-        else {throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользоватаеля не сущетсвует!");}
     }
 }

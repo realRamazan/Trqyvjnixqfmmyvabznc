@@ -2,11 +2,11 @@ package com.example.Trqyvjnixqfmmyvabznc.dto;
 
 public class UserDTO {
     int id;
-    String name;
-    String phoneNumber1;
-    String PhoneNumber2;
-    String yearOfBirth;
-    String date;
+    private String name;
+    private String phoneNumber1;
+    private String PhoneNumber2;
+    private String yearOfBirth;
+    private String date;
 
 
     public UserDTO() {

@@ -18,25 +18,27 @@ public class UserMongoDBController {
     UserMongoDBService userMongoDBService;
 
     @GetMapping("/userMongo")
-    public UserMongoDB getUserMongoDB(@RequestParam("id") String id){
+    public UserMongoDB getUserMongoDB(@RequestParam("id") String id) {
         return userMongoDBService.getUserMongoDB(id);
     }
+
     @PostMapping("/mongoDB")
-    public List<UserMongoDB> getAll(@RequestBody Filter filter){
+    public List<UserMongoDB> getAll(@RequestBody Filter filter) {
         return userMongoDBService.findAll(filter);
     }
+
     @PostMapping("/createMongo")
-    public List<UserMongoDB> createUserMongoDB(@RequestBody UserMongoDTO userMongoDTO){
+    public List<UserMongoDB> createUserMongoDB(@RequestBody UserMongoDTO userMongoDTO) {
         return userMongoDBService.createUserMongo(userMongoDTO);
     }
 
     @PostMapping("/updateMongo")
-    public List<UserMongoDB> updateUserMongoDB(@RequestBody UserMongoDTO userMongoDTO){
+    public List<UserMongoDB> updateUserMongoDB(@RequestBody UserMongoDTO userMongoDTO) {
         return userMongoDBService.updateUserMongo(userMongoDTO);
     }
 
     @PostMapping("/deleteMongo")
-    public List<UserMongoDB> deleteUserMongoDB(@RequestParam("id") String id){
+    public List<UserMongoDB> deleteUserMongoDB(@RequestParam("id") String id) {
         return userMongoDBService.deleteUserMongoDB(id);
     }
 }
