@@ -1,0 +1,320 @@
+{
+	"info": {
+		"_postman_id": "414dc138-023b-4f74-ab8e-94e197c93d1e",
+		"name": "Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30673546"
+	},
+	"item": [
+		{
+			"name": "requests",
+			"item": [
+				{
+					"name": "localhost:8080/users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offset\": 0, \r\n    \"limit\": 6\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 11, \r\n    \"phoneNumber1\": \"1234567890\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Matt\", \r\n    \"yearOfBirth\": \"1995\",\r\n    \"phoneNumber1\": \"5566741\",\r\n    \"phonenUmber2\": \"2236448\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Matt\", \r\n    \"yearOfBirth\": \"1995\",\r\n    \"phoneNumber1\": \"5566741\",\r\n    \"phonenUmber2\": \"2236448\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/user?id=11",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Matt\", \r\n    \"yearOfBirth\": \"1995\",\r\n    \"phoneNumber1\": \"5566741\",\r\n    \"phonenUmber2\": \"2236448\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/delete?id=11",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "requests MongoDB",
+			"item": [
+				{
+					"name": "localhost:8080/userMongoDB",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offset\": 0, \r\n    \"limit\": 6\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/userMongo?id=653949177016901f23934d34",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"userMongo"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "653949177016901f23934d34"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/usersMongoDB",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offset\": 0, \r\n    \"limit\": 6\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/mongoDB",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mongoDB"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/updateMongo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"653949177016901f23934d34\", \r\n    \"phoneNumber1\": \"1234567890\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/updateMongo",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"updateMongo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/createMongo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Matt\", \r\n    \"yearOfBirth\": \"1995\",\r\n    \"phoneNumber1\": \"5566741\",\r\n    \"phoneNumber2\": \"2236448\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/createMongo",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"createMongo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/deleteMongo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Matt\", \r\n    \"yearOfBirth\": \"1995\",\r\n    \"phoneNumber1\": \"5566741\",\r\n    \"phonenUmber2\": \"2236448\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/deleteMongo?id=653b4089575d4d38dc16092c",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deleteMongo"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "653b4089575d4d38dc16092c"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

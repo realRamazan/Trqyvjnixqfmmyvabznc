@@ -21,7 +21,7 @@ public class UserMongoDBController {
     public UserMongoDB getUserMongoDB(@RequestParam("id") String id){
         return userMongoDBService.getUserMongoDB(id);
     }
-    @GetMapping("/mongoDB")
+    @PostMapping("/mongoDB")
     public List<UserMongoDB> getAll(@RequestBody Filter filter){
         return userMongoDBService.findAll(filter);
     }
