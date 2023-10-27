@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-data
+      author: Ramazan
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: 'KennyS'
+              - column:
+                  name: yearOfBirth
+                  value: '1992'
+              - column:
+                  name: phoneNumber1
+                  value: '775533'
+              - column:
+                  name: phoneNumber2
+                  value: '123654789'
+              - column:
+                  name: date
+                  value: '27.10.2023 2:57'

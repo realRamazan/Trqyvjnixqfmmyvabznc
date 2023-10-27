@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-user
+      author: Ramazan
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable:  false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: yearOfBirth
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phoneNumber1
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phoneNumber2
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
